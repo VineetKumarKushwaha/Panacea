@@ -1,0 +1,39 @@
+<div class="dashboard">
+    <h1>List of Recipes</h1>
+    <a class="button" ng-click="vm.logoutClicked()">Logout </a>
+    <div class="mainContainer" ng-class="{recipeSelected:vm.isRecipeSelected}">
+        <div class="listContainer">
+            <ul>
+                <li ng-class="{highlight: item.isActive}" class="item" ng-repeat="item in vm.recipeList" ng-click="vm.recipeSelected($index)">
+                    <div>
+                        <div class="imageSelector">
+                            <img ng-src="{{item.img}}" alt="icon"/>
+                        </div>
+                        <div class="description">
+                            <h2 ng-bind="item.name"></h2>
+                            <h4 ng-bind="item.description"></h4>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+        </div>
+        <div class="detailContainer">
+            <div class="close-button" ng-click="vm.closeDetailContainer()"></div>
+            <div class="dropBox">
+                    <h1>{{vm.detailRecipe.name}}</h1>
+                <h2>Upload file from dropbox</h2>
+                 <a ng-click="vm.authenticateUser()" class=" dropbox-dropin-btn dropbox-dropin-default"><span class="dropin-btn-status"></span>Choose from Dropbox</a>
+                </div>
+
+            <div class="normalInput">
+                <h2 style=" margin-left: 40px;">Enter Zipcode</h2>
+                <div>
+                    <input type="text" class="simple" ng-model="vm.Zipcode">
+                    <input id="gobutton" value="Go!" ng-click="vm.goButtonClicked()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

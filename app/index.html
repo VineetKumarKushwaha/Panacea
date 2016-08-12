@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Panacea</title>
+
+    <link href="http://localhost:9000/app/jspm_packages/github/necolas/normalize.css@4.2.0/normalize.css" rel="stylesheet">
+
+    <link href="css.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="ypioz5hh2ezva3l"></script>
+    <!--<script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js">
+    </script>
+
+    <script type="text/javascript" src="http://oss.sheetjs.com/js-xlsx/xlsx.core.min.js"></script>
+
+    <script src="http://oss.sheetjs.com/js-xlsx/jszip.js"></script>
+    <script src="http://oss.sheetjs.com/js-xlsx/shim.js"></script>
+    <!--<script src="http://oss.sheetjs.com/js-xlsx/xlsx.js"></script>-->
+    <script src="http://oss.sheetjs.com/js-xlsx/ods.js"></script>
+    <script src="fileSaver.js"></script>
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.22.1/ramda.min.js"></script>
+
+
+
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+        System.import('/app/bootstrap')
+                .catch(console.error.bind(console));
+    </script>
+</head>
+<body>
+    <div>
+<!--<div id="container"></div>-->
+        <header id="header">
+            <div class="container">
+                <div id="logo"></div>
+                <div class="header_text">
+                    <h2>Panacea</h2>
+                </div>
+            </div>
+        </header>
+
+        <ng-view>
+
+        </ng-view>
+        <footer></footer>
+    </div>
+</body>
+
+<script>
+   /* var options = {
+
+        // Required. Called when a user selects an item in the Chooser.
+        success: function(files) {
+            alert("Here's the file link: " + files[0].link)
+        },
+
+        // Optional. Called when the user closes the dialog without selecting a file
+        // and does not include any parameters.
+        cancel: function() {
+
+        },
+
+        // Optional. "preview" (default) is a preview link to the document for sharing,
+        // "direct" is an expiring link to download the contents of the file. For more
+        // information about link types, see Link types below.
+        linkType: "preview", // or "direct"
+
+        // Optional. A value of false (default) limits selection to a single file, while
+        // true enables multiple file selection.
+        multiselect: false, // or true
+
+        // Optional. This is a list of file extensions. If specified, the user will
+        // only be able to select files with these extensions. You may also specify
+        // file types, such as "video" or "images" in the list. For more information,
+        // see File types below. By default, all extensions are allowed.
+        extensions: ['.pdf', '.doc', '.docx'],
+    };
+    var button = Dropbox.createChooseButton(options);
+    document.getElementById("container").appendChild(button);
+
+    Dropbox.choose(options);*/
+
+
+
+</script>
+</html>
