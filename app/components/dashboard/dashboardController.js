@@ -13,6 +13,81 @@ function s2ab(s) {
     return buf;
 }
 
+
+var developerKey = 'AIzaSyDZy2vfGdPpJJy3ch1c8DF693zv8uCksMI';
+
+// The Client ID obtained from the Google Developers Console. Replace with your own Client ID.
+var clientId = "474313186563-0tuu32jrsqsfaapjofakehste5svv4co.apps.googleusercontent.com"
+
+// Scope to use to access user's photos.
+var scope = ['https://www.googleapis.com/auth/photos'];
+
+var pickerApiLoaded = false;
+var oauthToken;
+
+
+function onAuthApiLoad() {
+    window.gapi.auth.authorize(
+        {
+            'client_id': clientId,
+            'scope': scope,
+            'immediate': false
+        },
+        handleAuthResult);
+}
+
+function onPickerApiLoad() {
+    pickerApiLoaded = true;
+    createPicker();
+}
+
+function handleAuthResult(authResult) {
+    if (authResult && !authResult.error) {
+        oauthToken = authResult.access_token;
+        createPicker();
+    }
+}
+
+// Create and render a Picker object for picking user Photos.
+function createPicker() {
+    if (pickerApiLoaded && oauthToken) {
+        var picker = new google.picker.PickerBuilder().
+            addView(google.picker.ViewId.DOCUMENTS).
+            setOAuthToken(oauthToken).
+            setCallback(pickerCallback).
+            build();
+        picker.setVisible(true);
+    }
+}
+
+// A simple callback implementation.
+function pickerCallback(data) {
+    var url = 'nothing';
+    if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+        var doc = data[google.picker.Response.DOCUMENTS][0];
+        url = doc[google.picker.Document.URL];
+    }
+    var message = 'You picked: ' + url;
+    //document.getElementById('result').innerHTML = message;
+    downloadFile(url)
+}
+
+
+function downloadFile(file) {
+    var accessToken = gapi.auth.getToken().access_token;
+    var xhr = new XMLHttpRequest();
+    file = file.replace("https://docs.google.com",location.origin);
+    xhr.open('GET', file);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+    xhr.onload = function() {
+        console.log(xhr.responseText);
+    };
+    xhr.onerror = function(error) {
+        console.log("error");
+    };
+    xhr.send();
+}
+
 function  sheet_from_array_of_arrays(data, opts) {
     var ws = {};
     var range = {s: {c:10000000, r:10000000}, e: {c:0, r:0 }};
@@ -258,6 +333,11 @@ class DashboardController {
 
     goButtonClicked () {
 
+    }
+
+    authenticateUserViaGoogleDrive () {
+        gapi.load('auth', {'callback': onAuthApiLoad});
+        gapi.load('picker', {'callback': onPickerApiLoad});
     }
 
 }

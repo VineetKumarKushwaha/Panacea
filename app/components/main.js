@@ -1,4 +1,5 @@
 import router from 'angular-route';
+//import angular_google_picker from 'angular-google-picker';
 import config from 'components/routes.js';
 import authentication from 'services/authentication.js'
 

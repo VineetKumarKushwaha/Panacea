@@ -1,7 +1,6 @@
-1)Install nodejs 
-
-2)Install npm gobally
-
-3Install grunt globally and locally as well.
-
-4)After installing everything you just need to run command “Grunt connect” and then you can run application on any browser (default port is 9000)
+Node js
+Install NPM locally and globally
+Commands :-
+npm install
+jspm install
+grunt connect

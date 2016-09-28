@@ -55,6 +55,7 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.0",
+      "angular-google-picker": "npm:angular-google-picker@^0.2.2",
       "angular-material": "github:angular/bower-material@^1.0.9",
       "angular-route": "github:angular/bower-angular-route@^1.5.8",
       "css": "github:systemjs/plugin-css@^0.1.25",

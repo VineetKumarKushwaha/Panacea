@@ -18,10 +18,15 @@ module.exports = function(grunt) {
                     }
                 },
                 proxies: [
-                    {
+                    /*{
                         context: '/api/',
                         host: '10.120.89.187',
                         port: 3000
+                    },*/
+                    {
+                        context:'/document/',
+                        host:'docs.google.com',
+                        port:80
                     }
                 ]
             }
