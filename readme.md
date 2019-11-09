@@ -1,1 +1,1 @@
-Angular JS + Grunt + Npm
+Angular JS + ES6 + Grunt + Npm + Babel
